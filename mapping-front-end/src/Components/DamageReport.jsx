@@ -8,8 +8,26 @@ import Card from "react-bootstrap/Card"
 import InputGroup from 'react-bootstrap/InputGroup';
 import MapView from "./Mapview"
 import Footer from "./Footer"
+import axios from "axios";
+import { useState } from "react"
 
 const DamageReport = () => {
+
+    const [formData, setFormData] = useState({
+        firstName: "",
+        lastName: "",
+        emailAddress: "",
+        contactNumber: "",
+        contactNumber: "",
+        damagedType: "",
+        dateOfIncident: "",
+        timeOfIncident: "",
+        photoVideo: null,
+        severityLevel: "",
+        shortDescription: "",
+        location: { lat: null, lng: null }
+    })
+
     return (
         <Container className="text-center mt-5">
             <Card className="shadow-lg p-4 w-100">
