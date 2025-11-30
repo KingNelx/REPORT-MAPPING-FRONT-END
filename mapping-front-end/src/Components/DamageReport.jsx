@@ -18,15 +18,37 @@ const DamageReport = () => {
         lastName: "",
         emailAddress: "",
         contactNumber: "",
-        contactNumber: "",
         damagedType: "",
-        dateOfIncident: "",
-        timeOfIncident: "",
+        dateofIncident: "",
+        timeofIncident: "",
         photoVideo: null,
+        mediaPath: "",
         severityLevel: "",
         shortDescription: "",
-        location: { lat: null, lng: null }
     })
+
+    const { firstName, lastName, emailAddress, contactNumber,
+        damagedType, dateofIncident, timeofIncident, photoVideo, mediaPath, severityLevel, shortDescription } = formData;
+
+
+    const handleInputFields = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...
+            formData, [name]: value.toUpperCase()
+        })
+    }
+
+
+    const submitReport = async () => {
+
+        try {
+            const response = await axios.post("/api/damage-report", formData);
+
+        } catch (error) {
+
+        }
+    }
 
     return (
         <Container className="text-center mt-5">
@@ -42,8 +64,12 @@ const DamageReport = () => {
                                     label="First name"
                                 >
                                     <Form.Control
-                                        type="text"
+                                        type={"text"}
                                         placeholder="First name"
+                                        value={firstName}
+                                        name="firstName"
+                                        onChange={handleInputFields}
+                                        required
                                     />
                                 </FloatingLabel>
                             </Col>
@@ -55,8 +81,12 @@ const DamageReport = () => {
                                     label="Last name"
                                 >
                                     <Form.Control
-                                        type="text"
+                                        type={"text"}
                                         placeholder="Last name"
+                                        value={lastName}
+                                        name="lastName"
+                                        onChange={handleInputFields}
+                                        required
                                     />
                                 </FloatingLabel>
                             </Col>
@@ -71,8 +101,12 @@ const DamageReport = () => {
                                     label="Email Address"
                                 >
                                     <Form.Control
-                                        type="email"
+                                        type={"emailAddress"}
                                         placeholder="Email Address"
+                                        value={emailAddress}
+                                        name="emailAddress"
+                                        onChange={handleInputFields}
+                                        required
                                     />
                                 </FloatingLabel>
                             </Col>
@@ -86,8 +120,12 @@ const DamageReport = () => {
                                         label="Contact Number"
                                     >
                                         <Form.Control
-                                            type="text"
+                                            type={"text"}
                                             placeholder="Contact Number"
+                                            vale={contactNumber}
+                                            name="contactNumber"
+                                            onChange={handleInputFields}
+                                            required
                                         />
                                     </FloatingLabel>
                                 </InputGroup>
@@ -101,7 +139,13 @@ const DamageReport = () => {
                                     className="mb-3"
                                     label="Damage Type"
                                 >
-                                    <Form.Select>
+                                    <Form.Select
+                                        type={"text"}
+                                        name="damagedType"
+                                        value={damagedType}
+                                        required
+                                        onChange={handleInputFields}
+                                    >
                                         <option>Select</option>
                                         <option>Road</option>
                                         <option>Bridge</option>
